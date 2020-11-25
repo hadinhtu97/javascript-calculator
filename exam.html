@@ -17,10 +17,9 @@
                 super(props);
                 this.state = {
                     display: '0',
-                    lastNumber: '',
-                    lastDecima: '',
-                    lastOperator: '',
-                    lastResult: '0',
+                    hasDecima: false,
+                    operator: '',
+                    result: '0',
                     errors: ['NaN', 'Syntax Error']
                 }
                 this.clear = this.clear.bind(this);
@@ -29,25 +28,40 @@
                 this.inputOperator = this.inputOperator.bind(this);
                 this.equals = this.equals.bind(this);
                 this.checkErrors = this.checkErrors.bind(this);
+                this.setDisplayToResult = this.setDisplayToResult.bind(this);
+                this.setResultToDisplay = this.setResultToDisplay.bind(this);
             }
             checkErrors() {
-                if (this.state.errors.hasIndexOf(this.state.display)) {
+                if (this.state.errors.indexOf(this.state.display) != -1) {
                     return true;
                 } else {
                     return false;
                 }
             }
+            setDisplayToResult() {
+                this.setState(state => {
+                    return {
+                        result: state.display
+                    }
+                })
+            }
+            setResultToDisplay() {
+                this.setState(state => {
+                    return {
+                        display: state.result
+                    }
+                })
+            }
             clear() {
                 this.setState({
                     display: '0',
-                    lastNumber: '',
-                    lastDecima: '',
-                    lastOperator: '',
-                    lastResult: '0'
+                    hasDecima: false,
+                    operator: '',
+                    result: '0'
                 })
             }
             inputNumber(e) {
-                if (this.checkErrors) {
+                if (this.checkErrors()) {
                     return null;
                 } else {
                     this.setState(state => {
@@ -56,16 +70,25 @@
                 }
             }
             inputDecima(e) {
-                if (this.checkErrors) {
+                if (this.checkErrors()) {
                     return null;
                 } else {
                     this.setState(state => {
-                        
+                        if (state.hasDecima) {
+                            return {
+                                display: state.errors[1]
+                            }
+                        } else {
+                            return {
+                                display: state.display.concat('.'),
+                                hasDecima: true
+                            }
+                        }
                     })
                 }
             }
             inputOperator(e) {
-                if (this.checkErrors) {
+                if (this.checkErrors()) {
                     return null;
                 } else {
                     this.setState(state => {
@@ -74,12 +97,10 @@
                 }
             }
             equals() {
-                if (this.checkErrors) {
+                if (this.checkErrors()) {
                     return null;
                 } else {
-                    this.setState(state => {
-
-                    })
+                    
                 }
             }
 
@@ -87,10 +108,9 @@
                 return (
                     <div id="caculator">
                         <div id="display">display: {this.state.display}</div>
-                        <div> lastNumber: {this.state.lastNumber}</div>
-                        <div> lastDecima: {this.state.lastDecima}</div>
-                        <div>lastOperator: {this.state.lastOperator}</div>
-                        <div>lastResult: {this.state.lastResult}</div>
+                        <div> hasDecima: {this.state.hasDecima.toString()}</div>
+                        <div>operator: {this.state.operator}</div>
+                        <div>result: {this.state.result}</div>
                         <button id="zero" value="0" onClick={this.inputNumber}>0</button>
                         <button id="one" value="1" onClick={this.inputNumber}>1</button>
                         <button id="two" value="2" onClick={this.inputNumber}>2</button>
