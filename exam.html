@@ -16,44 +16,75 @@
             constructor(props) {
                 super(props);
                 this.state = {
-                    expression: '1+1',
-                    result: '2',
-                    errors: []
+                    display: '0',
+                    lastNumber: '',
+                    lastDecima: '',
+                    lastOperator: '',
+                    lastResult: '0',
+                    errors: ['NaN', 'Syntax Error']
                 }
                 this.clear = this.clear.bind(this);
+                this.inputNumber = this.inputNumber.bind(this);
+                this.inputDecima = this.inputDecima.bind(this);
+                this.inputOperator = this.inputOperator.bind(this);
+                this.equals = this.equals.bind(this);
+                this.checkErrors = this.checkErrors.bind(this);
+            }
+            checkErrors() {
+                if (this.state.errors.hasIndexOf(this.state.display)) {
+                    return true;
+                } else {
+                    return false;
+                }
             }
             clear() {
                 this.setState({
-                    expression: '0',
-                    result: '0',
+                    display: '0',
+                    lastNumber: '',
+                    lastOperator: '',
+                    lastResult: '0'
                 })
+            }
+            inputNumber(e) {
+                
+            }
+            inputDecima(e) {
+
+            }
+            inputOperator(e) {
+
+            }
+            equals() {
+
             }
 
             render() {
                 return (
                     <div id="caculator">
-                        <div id="expression">{this.state.expression}</div>
-                        <div id="display">{this.state.result}</div>
-                        <button id="zero" value="0">0</button>
-                        <button id="one" value="1">1</button>
-                        <button id="two" value="2">2</button>
-                        <button id="three" value="3">3</button>
-                        <button id="four" value="4">4</button>
-                        <button id="five" value="5">5</button>
-                        <button id="six" value="6">6</button>
-                        <button id="seven" value="7">7</button>
-                        <button id="eight" value="8">8</button>
-                        <button id="nine" value="9">9</button>
+                        <div id="display">display: {this.state.display}</div>
+                        <div> lastNumber: {this.state.lastNumber}</div>
+                        <div>lastOperator: {this.state.lastOperator}</div>
+                        <div>lastResult: {this.state.lastResult}</div>
+                        <button id="zero" value="0" onClick={this.inputNumber}>0</button>
+                        <button id="one" value="1" onClick={this.inputNumber}>1</button>
+                        <button id="two" value="2" onClick={this.inputNumber}>2</button>
+                        <button id="three" value="3" onClick={this.inputNumber}>3</button>
+                        <button id="four" value="4" onClick={this.inputNumber}>4</button>
+                        <button id="five" value="5" onClick={this.inputNumber}>5</button>
+                        <button id="six" value="6" onClick={this.inputNumber}>6</button>
+                        <button id="seven" value="7" onClick={this.inputNumber}>7</button>
+                        <button id="eight" value="8" onClick={this.inputNumber}>8</button>
+                        <button id="nine" value="9" onClick={this.inputNumber}>9</button>
                         <br />
-                        <button id="decimal">.</button>
+                        <button id="decimal" value='.' onClick={this.inputDecima}>.</button>
                         <br />
                         <button id="clear" onClick={this.clear}>AC</button>
-                        <button id="add">+</button>
-                        <button id="subtract">-</button>
-                        <button id="multiply">*</button>
-                        <button id="divide">/</button>
+                        <button id="add" value='+' onClick={this.inputOperator}>+</button>
+                        <button id="subtract" value='-' onClick={this.inputOperator}>-</button>
+                        <button id="multiply" value='*' onClick={this.inputOperator}>*</button>
+                        <button id="divide" value='/' onClick={this.inputOperator}>/</button>
                         <br />
-                        <button id="equals">=</button>
+                        <button id="equals" onClick={this.equals}>=</button>
                         <br />
                     </div>
                 )
