@@ -41,21 +41,46 @@
                 this.setState({
                     display: '0',
                     lastNumber: '',
+                    lastDecima: '',
                     lastOperator: '',
                     lastResult: '0'
                 })
             }
             inputNumber(e) {
-                
+                if (checkErrors) {
+                    return null;
+                } else {
+                    this.setState(state => {
+
+                    })
+                }
             }
             inputDecima(e) {
+                if (checkErrors) {
+                    return null;
+                } else {
+                    this.setState(state => {
 
+                    })
+                }
             }
             inputOperator(e) {
+                if (checkErrors) {
+                    return null;
+                } else {
+                    this.setState(state => {
 
+                    })
+                }
             }
             equals() {
+                if (checkErrors) {
+                    return null;
+                } else {
+                    this.setState(state => {
 
+                    })
+                }
             }
 
             render() {
@@ -63,6 +88,7 @@
                     <div id="caculator">
                         <div id="display">display: {this.state.display}</div>
                         <div> lastNumber: {this.state.lastNumber}</div>
+                        <div> lastDecima: {this.state.lastDecima}</div>
                         <div>lastOperator: {this.state.lastOperator}</div>
                         <div>lastResult: {this.state.lastResult}</div>
                         <button id="zero" value="0" onClick={this.inputNumber}>0</button>
