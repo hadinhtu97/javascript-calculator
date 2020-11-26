@@ -203,30 +203,72 @@
 
             render() {
                 return (
-                    <div id="caculator">
+                    <div id="calculator">
                         <div id="display">{this.state.display}</div>
                         <br />
-                        <button id="clear" onClick={this.clear}>AC</button>
-                        <button id="divide" value='/' onClick={this.inputOperator}>/</button>
-                        <br />
-                        <button id="seven" value="7" onClick={this.inputNumber}>7</button>
-                        <button id="eight" value="8" onClick={this.inputNumber}>8</button>
-                        <button id="nine" value="9" onClick={this.inputNumber}>9</button>
-                        <button id="multiply" value='*' onClick={this.inputOperator}>*</button>
-                        <br />
-                        <button id="four" value="4" onClick={this.inputNumber}>4</button>
-                        <button id="five" value="5" onClick={this.inputNumber}>5</button>
-                        <button id="six" value="6" onClick={this.inputNumber}>6</button>
-                        <button id="subtract" value='-' onClick={this.inputOperator}>-</button>
-                        <br />
-                        <button id="one" value="1" onClick={this.inputNumber}>1</button>
-                        <button id="two" value="2" onClick={this.inputNumber}>2</button>
-                        <button id="three" value="3" onClick={this.inputNumber}>3</button>
-                        <button id="add" value='+' onClick={this.inputOperator}>+</button>
-                        <br />
-                        <button id="zero" value="0" onClick={this.inputNumber}>0</button>
-                        <button id="decimal" value='.' onClick={this.inputDecima}>.</button>
-                        <button id="equals" onClick={this.equals}>=</button>
+                        <table>
+                            <tr>
+                                <td colspan="3">
+                                    <button id="clear" onClick={this.clear}>AC</button>
+                                </td>
+                                <td>
+                                    <button id="divide" value='/' onClick={this.inputOperator}>/</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <button id="seven" value="7" onClick={this.inputNumber}>7</button>
+                                </td>
+                                <td>
+                                    <button id="eight" value="8" onClick={this.inputNumber}>8</button>
+                                </td>
+                                <td>
+                                    <button id="nine" value="9" onClick={this.inputNumber}>9</button>
+                                </td>
+                                <td>
+                                    <button id="multiply" value='*' onClick={this.inputOperator}>*</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <button id="four" value="4" onClick={this.inputNumber}>4</button>
+                                </td>
+                                <td>
+                                    <button id="five" value="5" onClick={this.inputNumber}>5</button>
+                                </td>
+                                <td>
+                                    <button id="six" value="6" onClick={this.inputNumber}>6</button>
+                                </td>
+                                <td>
+                                    <button id="subtract" value='-' onClick={this.inputOperator}>-</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <button id="one" value="1" onClick={this.inputNumber}>1</button>
+                                </td>
+                                <td>
+                                    <button id="two" value="2" onClick={this.inputNumber}>2</button>
+                                </td>
+                                <td>
+                                    <button id="three" value="3" onClick={this.inputNumber}>3</button>
+                                </td>
+                                <td>
+                                    <button id="add" value='+' onClick={this.inputOperator}>+</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <button id="zero" value="0" onClick={this.inputNumber}>0</button>
+                                </td>
+                                <td>
+                                    <button id="decimal" value='.' onClick={this.inputDecima}>.</button>
+                                </td>
+                                <td>
+                                    <button id="equals" onClick={this.equals}>=</button>
+                                </td>
+                            </tr>
+                        </table>
                     </div>
                 )
             }
